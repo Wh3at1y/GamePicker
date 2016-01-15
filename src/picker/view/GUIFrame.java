@@ -1,7 +1,5 @@
 package picker.view;
 
-import java.awt.Color;
-
 import javax.swing.JFrame;
 
 import picker.controller.PickerController;
@@ -25,7 +23,7 @@ public class GUIFrame extends JFrame
 			setResizable(false);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setContentPane(basePanel);
-			setSize(400,180);
+			setSize(300,300);
 			setVisible(true);
 		}
 	}

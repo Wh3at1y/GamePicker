@@ -26,22 +26,20 @@ public class GUIPanel extends JPanel
 		private Font gameFont;
 		
 		public GUIPanel(PickerController baseController)
-		{
+		{			
 			popUp = new PopUps();
 			gameList = new ArrayList<String>();
 			baseLayout = new SpringLayout();
 			chooseButton = new JButton("Randomly Select");
 			addButton = new JButton("Add a Game");
 			clearButton = new JButton("Clear Games");
-			
 			gameText = new JTextField();
 			showGames = new JTextArea();
-			
 			gameFont = new Font("Geneva", Font.PLAIN, 14);
-			
 			gameText.setToolTipText("Enter A Game Name");
 			showGames.setFont(gameFont);
 			showGames.setText("Games Added : \n");
+			showGames.setEditable(false);
 			
 			setupPanel();
 			setupLayout();
@@ -56,20 +54,21 @@ public class GUIPanel extends JPanel
 			add(gameText);
 			add(showGames);
 			add(clearButton);
-			
 			setBackground(Color.white);
 		}
 		
 		private void setupLayout()
 		{
-			baseLayout.putConstraint(SpringLayout.NORTH, addButton, 0, SpringLayout.NORTH, chooseButton);
-			baseLayout.putConstraint(SpringLayout.EAST, addButton, -10, SpringLayout.EAST, this);
 			baseLayout.putConstraint(SpringLayout.WEST, chooseButton, 0, SpringLayout.WEST, this);
 			baseLayout.putConstraint(SpringLayout.SOUTH, chooseButton, -10, SpringLayout.SOUTH, this);
-			baseLayout.putConstraint(SpringLayout.WEST, gameText, 0, SpringLayout.EAST, chooseButton);
-			baseLayout.putConstraint(SpringLayout.SOUTH, gameText, -60, SpringLayout.SOUTH, this);
-			baseLayout.putConstraint(SpringLayout.EAST, gameText, 0, SpringLayout.WEST, addButton);
-			baseLayout.putConstraint(SpringLayout.NORTH, clearButton, 10, SpringLayout.NORTH, this);
+			baseLayout.putConstraint(SpringLayout.NORTH, showGames, 20, SpringLayout.SOUTH, gameText);
+			baseLayout.putConstraint(SpringLayout.WEST, showGames, 0, SpringLayout.WEST, gameText);
+			baseLayout.putConstraint(SpringLayout.WEST, gameText, 10, SpringLayout.WEST, this);
+			baseLayout.putConstraint(SpringLayout.EAST, gameText, -145, SpringLayout.EAST, this);
+			baseLayout.putConstraint(SpringLayout.NORTH, addButton, 1, SpringLayout.NORTH, gameText);
+			baseLayout.putConstraint(SpringLayout.WEST, addButton, 6, SpringLayout.EAST, gameText);
+			baseLayout.putConstraint(SpringLayout.NORTH, gameText, 10, SpringLayout.NORTH, this);
+			baseLayout.putConstraint(SpringLayout.NORTH, clearButton, 0, SpringLayout.NORTH, chooseButton);
 			baseLayout.putConstraint(SpringLayout.EAST, clearButton, -10, SpringLayout.EAST, this);
 		}
 		
@@ -97,7 +96,7 @@ public class GUIPanel extends JPanel
 				{
 					public void actionPerformed(ActionEvent click)
 					{
-						if(gameList.size() == 5)
+						if(gameList.size() == 6)
 							{
 								popUp.showText("You have reached the game limit.");
 							}
@@ -122,6 +121,7 @@ public class GUIPanel extends JPanel
 									}
 								
 							}
+						gameText.setText("");
 						
 					}
 				});
