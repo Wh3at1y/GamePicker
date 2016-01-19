@@ -13,33 +13,42 @@ import picker.controller.PickerController;
 
 public class GUIPanel extends JPanel
 	{
+		private PopUps popUp;
+		
 		private SpringLayout baseLayout;
+		
+		private ArrayList<String> gameList;
 		
 		private JButton chooseButton;
 		private JButton addButton;
 		private JButton clearButton;
+		
 		private JTextField gameText;
 		private JTextArea showGames;
-		private ArrayList<String> gameList;
-		private PopUps popUp;
 		
 		private Font gameFont;
 		
 		public GUIPanel(PickerController baseController)
 		{			
 			popUp = new PopUps();
-			gameList = new ArrayList<String>();
+			
 			baseLayout = new SpringLayout();
+			
+			gameList = new ArrayList<String>();
+			
 			chooseButton = new JButton("Randomly Select");
 			addButton = new JButton("Add a Game");
 			clearButton = new JButton("Clear Games");
-			gameText = new JTextField();
-			showGames = new JTextArea();
-			gameFont = new Font("Geneva", Font.PLAIN, 14);
+			
+			gameText = new JTextField(); 
 			gameText.setToolTipText("Enter A Game Name");
+			
+			showGames = new JTextArea();
 			showGames.setFont(gameFont);
 			showGames.setText("Games Added : \n");
 			showGames.setEditable(false);
+			
+			gameFont = new Font("Geneva", Font.PLAIN, 14);
 			
 			setupPanel();
 			setupLayout();
@@ -51,9 +60,10 @@ public class GUIPanel extends JPanel
 			setLayout(baseLayout);
 			add(chooseButton);
 			add(addButton);
+			add(clearButton);
 			add(gameText);
 			add(showGames);
-			add(clearButton);
+			
 			setBackground(Color.white);
 		}
 		
@@ -79,7 +89,6 @@ public class GUIPanel extends JPanel
 					public void actionPerformed(ActionEvent click)
 					{
 						gameList.clear();
-						
 						showGames.setText("Games Added : \n");
 					}
 				});
@@ -122,7 +131,6 @@ public class GUIPanel extends JPanel
 								
 							}
 						gameText.setText("");
-						
 					}
 				});
 		}

@@ -14,7 +14,7 @@ public class PopUps
 		
 		public void showText(String input)
 		{
-			JOptionPane.showMessageDialog(null, input, input, 0, chatIcon);
-
+			String popUpTitle = "Game Picker Notify";
+			JOptionPane.showMessageDialog(null, input, popUpTitle, 0, chatIcon);
 		}
 	}
