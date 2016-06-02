@@ -45,7 +45,7 @@ public class GUIPanel extends JPanel
 			
 			showGames = new JTextArea();
 			showGames.setFont(gameFont);
-			showGames.setText("Games Added : \n");
+			//showGames.setText("Games Added : \n");
 			showGames.setEditable(false);
 			
 			gameFont = new Font("Geneva", Font.PLAIN, 14);
